@@ -179,12 +179,13 @@ const Home = (props: HomeProps) => {
 
       {wallet && <p>Total Available: {itemsAvailable+99}</p>}
 
-      {wallet && <p>Minted: {itemsRedeemed+99+400}</p>}
+      {wallet && <p>Minted: {itemsRedeemed+99+403}</p>}
 
-      {wallet && <p>Remaining: {itemsRemaining-400}</p>}
+      {wallet && <p>Remaining: {itemsRemaining-403}</p>}
       </tr>
       <tr>
       <MintContainer>
+        
         {!wallet ? (
           <ConnectButton>Connect Wallet</ConnectButton>
         ) : (
