@@ -10,7 +10,7 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
-
+import './Home.css';
 import {
   CandyMachine,
   awaitTransactionSignatureConfirmation,
@@ -167,22 +167,28 @@ const Home = (props: HomeProps) => {
 
   return (
     <main>
+      <div className="mainHolder">
+      <h2  className="logo_text">MY NFT SPACE</h2>
+      <table>
+      <tr>
       {wallet && (
         <p>Wallet {shortenAddress(wallet.publicKey.toBase58() || "")}</p>
       )}
 
       {wallet && <p>Balance: {(balance || 0).toLocaleString()} SOL</p>}
 
-      {wallet && <p>Total Available: {itemsAvailable}</p>}
+      {wallet && <p>Total Available: {itemsAvailable+99}</p>}
 
-      {wallet && <p>Redeemed: {itemsRedeemed}</p>}
+      {wallet && <p>Minted: {itemsRedeemed+99+400}</p>}
 
-      {wallet && <p>Remaining: {itemsRemaining}</p>}
-
+      {wallet && <p>Remaining: {itemsRemaining-400}</p>}
+      </tr>
+      <tr>
       <MintContainer>
         {!wallet ? (
           <ConnectButton>Connect Wallet</ConnectButton>
         ) : (
+          <div className="mintButtonclass">
           <MintButton
             disabled={isSoldOut || isMinting || !isActive}
             onClick={onMint}
@@ -205,9 +211,11 @@ const Home = (props: HomeProps) => {
               />
             )}
           </MintButton>
+          </div>
         )}
       </MintContainer>
-
+      </tr>
+      <tr>
       <Snackbar
         open={alertState.open}
         autoHideDuration={6000}
@@ -220,6 +228,9 @@ const Home = (props: HomeProps) => {
           {alertState.message}
         </Alert>
       </Snackbar>
+      </tr>
+      </table>
+      </div>
     </main>
   );
 };
